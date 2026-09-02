@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DriftLens — AI-Bildserien QA</title>
+  <meta name="description" content="DriftLens prüft AI-Bildserien lokal mit 11 QA-Gates. Kein Upload. Logo, Portrait, Produkt, Comic." />
+  <meta name="theme-color" content="#010103" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/sketch-theme.css" />
+  <link rel="stylesheet" href="css/sketch-scatter.css" />
+</head>
+<body>
+  <div id="load-bar" class="load-bar hidden" role="status" aria-live="polite" aria-hidden="true">
+    <div class="load-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div class="load-bar-fill"></div>
+    </div>
+    <p class="load-bar-text"></p>
+  </div>
+  <header class="top">
+    <div class="brand-mark-wrap">
+      <img class="brand-mark-img" src="assets/brand/driftlens-dl.png" width="40" height="40" alt="DriftLens" />
+    </div>
+    <div class="brand-center">
+      <img class="brand-wordmark" src="assets/brand/driftlens-wordmark.png" alt="DriftLens" />
+    </div>
+    <div class="top-actions">
+      <button type="button" class="btn btn-compass-header" id="btn-compass-header" aria-label="Kompass">🧭</button>
+      <button type="button" class="btn" id="btn-lang" aria-label="Language">DE</button>
+      <button type="button" class="btn hidden" id="btn-export"></button>
+      <button type="button" class="btn hidden" id="btn-clear"></button>
+    </div>
+  </header>
+
+  <main id="app" class="app">
+    <section id="empty" class="empty">
+      <div class="sketch-scatter sketch-scatter-landing" aria-hidden="true">
+        <img class="sc sc-l-card1" src="assets/sketch/scatter/card-01.png" alt="" />
+        <img class="sc sc-l-stroke" src="assets/sketch/scatter/stroke-1.png" alt="" />
+        <img class="sc sc-l-dim" src="assets/sketch/scatter/dim-1024.png" alt="" />
+        <img class="sc sc-r-card6" src="assets/sketch/scatter/card-06.png" alt="" />
+        <img class="sc sc-r-graph" src="assets/sketch/scatter/graph-drift.png" alt="" />
+        <img class="sc sc-r-stroke" src="assets/sketch/scatter/stroke-3.png" alt="" />
+      </div>
+      <canvas id="hero-canvas" class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-wrap">
+        <h1 class="hero-title" id="hero-title"></h1>
+        <p class="hero-lead" id="hero-lead"></p>
+
+        <div id="drop" class="drop hero-drop" tabindex="0">
+          <div class="drop-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <rect x="4" y="8" width="32" height="24" rx="4" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M14 22l4 4 8-10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2 id="drop-title"></h2>
+          <p class="muted" id="drop-hint"></p>
+          <div class="drop-actions">
+            <label class="btn btn-accent">
+              <span id="btn-pick-label"></span>
+              <input id="file-input" type="file" accept="image/*,video/mp4,video/webm,video/quicktime" multiple hidden />
+            </label>
+            <label class="btn">
+              <span id="btn-video-label"></span>
+              <input id="video-input" type="file" accept="video/mp4,video/webm,video/quicktime" hidden />
+            </label>
+            <button type="button" class="btn" id="btn-demo"></button>
+          </div>
+          <p class="fineprint" id="drop-limit"></p>
+          <p id="empty-notice" class="empty-notice hidden" role="status" aria-live="polite"></p>
+        </div>
+
+        <ul class="hero-features" id="hero-features"></ul>
+
+        <div class="hero-section">
+          <h3 id="usecases-title"></h3>
+          <div class="usecase-grid" id="usecase-grid"></div>
+        </div>
+
+        <div class="hero-note" id="hero-subjects"></div>
+      </div>
+    </section>
+
+    <section id="work" class="work hidden">
+      <div class="sketch-scatter sketch-scatter-work" aria-hidden="true">
+        <img class="sc sc-w-stroke" src="assets/sketch/scatter/stroke-2.png" alt="" />
+        <img class="sc sc-w-delta" src="assets/sketch/scatter/dim-delta.png" alt="" />
+        <img class="sc sc-w-hatch" src="assets/sketch/scatter/hatch.png" alt="" />
+        <img class="sc sc-w-drift" src="assets/sketch/scatter/graph-drift.png" alt="" />
+      </div>
+      <aside class="verdict-bar" id="verdict-bar"></aside>
+
+      <div class="work-grid">
+        <section class="panel film">
+          <div class="panel-head">
+            <h2 id="film-title"></h2>
+            <label class="btn btn-small">
+              <span id="btn-add-label"></span>
+              <input id="file-add" type="file" accept="image/*,video/mp4,video/webm,video/quicktime" multiple hidden />
+            </label>
+            <label class="btn btn-small">
+              <span id="btn-add-video-label"></span>
+              <input id="file-add-video" type="file" accept="video/mp4,video/webm,video/quicktime" hidden />
+            </label>
+          </div>
+          <div id="filmstrip" class="filmstrip"></div>
+          <div class="drift-panel">
+            <h3 id="drift-title"></h3>
+            <div id="drift-chart" class="drift-chart"></div>
+            <div class="film-art-wrap" aria-hidden="true">
+              <canvas id="film-art-canvas"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel inspect">
+          <div class="panel-head">
+            <h2 id="inspect-title"></h2>
+            <div class="modes" role="tablist">
+              <button type="button" class="btn btn-small mode on" data-mode="blink" id="mode-blink"></button>
+              <button type="button" class="btn btn-small mode" data-mode="slider" id="mode-slider"></button>
+              <button type="button" class="btn btn-small mode" data-mode="heat" id="mode-heat"></button>
+              <button type="button" class="btn btn-small mode" data-mode="zones" id="mode-zones"></button>
+              <button type="button" class="btn btn-small mode" data-mode="region" id="mode-region"></button>
+            </div>
+          </div>
+          <div id="stage" class="stage"></div>
+          <div class="inspect-tools">
+            <label class="range-wrap hidden" id="blink-wrap">
+              <span id="blink-label"></span>
+              <input id="blink-speed" type="range" min="120" max="800" value="280" />
+            </label>
+            <label class="range-wrap hidden" id="slider-wrap">
+              <span id="slider-label"></span>
+              <input id="wipe" type="range" min="0" max="100" value="50" />
+            </label>
+          </div>
+          <p class="muted inspect-note" id="inspect-note"></p>
+        </section>
+
+        <section class="panel findings">
+          <div class="panel-head">
+            <h2 id="findings-title"></h2>
+          </div>
+          <div id="findings" class="findings-list"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span id="foot-offline"></span>
+    <a class="foot-link" id="foot-privacy" href="privacy.html"></a>
+    <button type="button" class="foot-link" id="btn-feedback"></button>
+    <span id="foot-version">DriftLens 1.0.0</span>
+  </footer>
+
+  <button type="button" class="compass-fab" id="btn-compass" aria-label="Kompass">
+    <span class="compass-fab-icon" aria-hidden="true">🧭</span>
+  </button>
+
+  <div id="compass-dialog" class="compass-dialog hidden" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="compass-card">
+      <button type="button" class="compass-x" id="compass-close" aria-label="Schließen">×</button>
+      <div class="compass-hero" aria-hidden="true">
+        <div class="compass-ring"></div>
+        <span class="compass-needle">🧭</span>
+      </div>
+      <p class="compass-kicker" id="compass-kicker"></p>
+      <h2 id="compass-title"></h2>
+      <p id="compass-body"></p>
+      <p class="compass-tip" id="compass-tip"></p>
+      <div class="compass-dots" id="compass-dots"></div>
+      <div class="compass-actions">
+        <button type="button" class="btn btn-ghost" id="compass-skip"></button>
+        <div class="compass-nav">
+          <button type="button" class="btn" id="compass-prev">←</button>
+          <button type="button" class="btn btn-accent" id="compass-next"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="feedback-dialog" class="feedback-dialog hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+    <div class="feedback-card">
+      <h2 id="feedback-title"></h2>
+      <p id="feedback-lead"></p>
+      <textarea id="feedback-text" rows="5"></textarea>
+      <p class="feedback-meta" id="feedback-meta"></p>
+      <p class="feedback-notice" id="feedback-notice" role="status" aria-live="polite"></p>
+      <div class="feedback-actions">
+        <button type="button" class="btn" id="feedback-cancel"></button>
+        <button type="button" class="btn btn-accent" id="feedback-send"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/hash.js"></script>
+  <script src="js/perceptual.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/series.js"></script>
+  <script src="js/video.js"></script>
+  <script src="js/face.js"></script>
+  <script src="js/analyze.js"></script>
+  <script src="js/compare.js"></script>
+  <script src="js/report.js"></script>
+  <script src="js/hero-bg.js"></script>
+  <script src="js/onboard.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/work-panel-bg.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    }
+  </script>
+</body>
+</html>

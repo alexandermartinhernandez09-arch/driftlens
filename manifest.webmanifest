@@ -1,0 +1,10 @@
+{
+  "name": "DriftLens",
+  "short_name": "DriftLens",
+  "description": "DriftLens — local QA for AI image series. 11+ gates, video frames, optional face gate.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#010103",
+  "theme_color": "#010103",
+  "lang": "de"
+}

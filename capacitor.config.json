@@ -1,0 +1,11 @@
+{
+  "appId": "com.driftlens.app",
+  "appName": "DriftLens",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

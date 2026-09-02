@@ -1,0 +1,161 @@
+/* Controlled scatter — margin zones only, individual cut-outs from Concept Sketch Vorlage */
+
+.work {
+  position: relative;
+}
+
+.sketch-scatter {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sc {
+  position: absolute;
+  object-fit: contain;
+  opacity: 0.13;
+  filter: contrast(1.02);
+}
+
+/* —— Landing: only left/right margins (center column tabu) —— */
+
+.sketch-scatter-landing .sc-l-card1 {
+  left: 1.5%;
+  top: 22%;
+  width: min(168px, 14vw);
+  transform: rotate(-9deg);
+}
+
+.sketch-scatter-landing .sc-l-stroke {
+  left: 0.5%;
+  bottom: 18%;
+  width: min(88px, 9vw);
+  transform: rotate(-14deg);
+  opacity: 0.11;
+}
+
+.sketch-scatter-landing .sc-l-dim {
+  left: 2%;
+  top: 12%;
+  width: min(92px, 10vw);
+  transform: rotate(-6deg);
+  opacity: 0.12;
+}
+
+.sketch-scatter-landing .sc-r-card6 {
+  right: 1.5%;
+  top: 28%;
+  width: min(168px, 14vw);
+  transform: rotate(8deg);
+}
+
+.sketch-scatter-landing .sc-r-graph {
+  right: 1%;
+  bottom: 16%;
+  width: min(100px, 11vw);
+  transform: rotate(6deg);
+  opacity: 0.11;
+}
+
+.sketch-scatter-landing .sc-r-stroke {
+  right: 0.5%;
+  top: 38%;
+  width: min(72px, 8vw);
+  transform: rotate(11deg);
+  opacity: 0.1;
+}
+
+/* —— QA view: work margins + drift hint —— */
+
+.sketch-scatter-work .sc-w-stroke {
+  left: 0.5%;
+  top: 30%;
+  width: min(76px, 8vw);
+  transform: rotate(-11deg);
+  opacity: 0.1;
+}
+
+.sketch-scatter-work .sc-w-delta {
+  right: 1.5%;
+  top: 8%;
+  width: min(96px, 10vw);
+  transform: rotate(5deg);
+  opacity: 0.11;
+}
+
+.sketch-scatter-work .sc-w-hatch {
+  right: 2%;
+  bottom: 22%;
+  width: min(48px, 5vw);
+  transform: rotate(7deg);
+  opacity: 0.09;
+}
+
+.work .sketch-scatter-work .sc-w-drift {
+  position: absolute;
+  left: auto;
+  right: 3%;
+  bottom: 6%;
+  width: min(110px, 12vw);
+  opacity: 0.12;
+  transform: rotate(-4deg);
+}
+
+.empty .hero-wrap,
+.empty .hero-section,
+.empty .hero-note,
+.empty .hero-features,
+.work-grid,
+.verdict-bar,
+.foot,
+.top {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1100px) {
+  .sc-l-card1,
+  .sc-r-card6 {
+    width: min(130px, 12vw);
+    opacity: 0.1;
+  }
+}
+
+@media (max-width: 900px) {
+  .sketch-scatter .sc {
+    opacity: 0.08;
+  }
+}
+
+@media (max-width: 720px) {
+  .sketch-scatter {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sc-l-card1,
+  .sc-r-card6 {
+    animation: scatter-float 14s ease-in-out infinite alternate;
+  }
+
+  .sc-r-card6 {
+    animation-delay: -5s;
+  }
+}
+
+@keyframes scatter-float {
+  from { transform: rotate(-9deg) translateY(0); }
+  to { transform: rotate(-7deg) translateY(-6px); }
+}
+
+.sc-r-card6 {
+  animation-name: scatter-float-r;
+}
+
+@keyframes scatter-float-r {
+  from { transform: rotate(8deg) translateY(0); }
+  to { transform: rotate(10deg) translateY(-5px); }
+}

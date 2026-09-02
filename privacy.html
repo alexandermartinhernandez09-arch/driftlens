@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DriftLens — Datenschutz</title>
+  <meta name="description" content="DriftLens Datenschutzerklärung — Bilder bleiben auf dem Gerät, kein Upload." />
+  <meta name="theme-color" content="#010103" />
+  <link rel="stylesheet" href="css/app.css" />
+  <link rel="stylesheet" href="css/sketch-theme.css" />
+  <style>
+    body {
+      background: #010103;
+      color: #eef2f6;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .privacy-wrap {
+      max-width: 42rem;
+      margin: 0 auto;
+      padding: 1.25rem 1rem 3rem;
+    }
+    .privacy-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .privacy-top a {
+      color: #c8f542;
+      text-decoration: none;
+    }
+    .privacy-top a:hover { text-decoration: underline; }
+    .privacy-lang {
+      display: flex;
+      gap: 0.35rem;
+    }
+    .privacy-lang button {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: #eef2f6;
+      border-radius: 6px;
+      padding: 0.35rem 0.65rem;
+      cursor: pointer;
+      font: inherit;
+    }
+    .privacy-lang button.on {
+      border-color: #c8f542;
+      background: rgba(200,245,66,0.12);
+    }
+    .privacy-wrap h1 {
+      font-size: 1.45rem;
+      margin: 0 0 0.35rem;
+    }
+    .privacy-meta {
+      color: #8b95a5;
+      font-size: 0.88rem;
+      margin: 0 0 1.5rem;
+    }
+    .privacy-wrap h2 {
+      font-size: 1.05rem;
+      margin: 1.35rem 0 0.45rem;
+      color: #f2f5f9;
+    }
+    .privacy-wrap p,
+    .privacy-wrap li {
+      color: #c5cdd8;
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+    .privacy-wrap ul {
+      padding-left: 1.2rem;
+      margin: 0.35rem 0 0.75rem;
+    }
+    .privacy-wrap li { margin-bottom: 0.35rem; }
+    .privacy-box {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      background: #121218;
+      padding: 0.85rem 1rem;
+      margin: 0.75rem 0;
+    }
+    .privacy-box strong { color: #7ae8b0; }
+    [hidden] { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="privacy-wrap">
+    <div class="privacy-top">
+      <a href="index.html" id="back-link">← Zur App</a>
+      <div class="privacy-lang" role="group" aria-label="Language">
+        <button type="button" id="lang-de" class="on">DE</button>
+        <button type="button" id="lang-en">EN</button>
+      </div>
+    </div>
+
+    <article id="content-de">
+      <h1>Datenschutzerklärung</h1>
+      <p class="privacy-meta">DriftLens · Version 1.0.0 · Stand: 2. September 2026</p>
+
+      <div class="privacy-box">
+        <strong>Kurz:</strong> DriftLens lädt deine Bilder und Videos nicht hoch. Die Analyse passiert auf deinem Gerät. Es gibt kein Benutzerkonto und kein Tracking.
+      </div>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>DriftLens wird als unabhängige App angeboten. Kontakt: über „Fehler melden“ in der App oder über die Angaben im Google Play Store.</p>
+
+      <h2>2. Welche Daten verarbeitet werden</h2>
+      <p>DriftLens verarbeitet die Dateien, die du selbst auswählst oder ablegst (Bilder, optional Video für Frame-Extraktion). Diese Dateien bleiben auf deinem Gerät.</p>
+      <ul>
+        <li>Kein Upload deiner Bilder oder Videos an unsere Server</li>
+        <li>Kein Benutzerkonto, keine Registrierung</li>
+        <li>Keine Werbung, kein Analytics-Tracking</li>
+        <li>QA-Reports (JSON/HTML) werden nur lokal auf dein Gerät exportiert, wenn du „Report“ wählst</li>
+      </ul>
+
+      <h2>3. Optionales Face-Gate</h2>
+      <p>Wenn du Face-Gate aktivierst, lädt die App einmalig KI-Modelle von Drittanbietern (MediaPipe über jsDelivr und Google Cloud Storage), damit Gesichter lokal erkannt werden können. Dabei werden <em>keine</em> deiner Bilder an diese Dienste gesendet — nur die Modell-Dateien werden heruntergeladen. Die Gesichtserkennung läuft danach offline auf dem Gerät.</p>
+
+      <h2>4. Feedback „Fehler melden“</h2>
+      <p>Wenn du Feedback sendest, kopiert die App deinen Text plus App-Version und Geräteinformationen in die Zwischenablage. Du entscheidest selbst, ob und wohin du diese Nachricht weiterleitest (E-Mail, Chat usw.). Die App übermittelt nichts automatisch.</p>
+
+      <h2>5. Internetverbindung</h2>
+      <p>DriftLens funktioniert offline für die Kernfunktionen. Internet wird nur benötigt für:</p>
+      <ul>
+        <li>optionales Face-Gate (Modell-Download, einmalig)</li>
+        <li>Beispielserie beim ersten Laden (falls noch nicht im Cache)</li>
+        <li>PWA-Updates über Service Worker (Browser-Installation)</li>
+      </ul>
+
+      <h2>6. Speicherung auf dem Gerät</h2>
+      <p>Bilder werden im Arbeitsspeicher deines Geräts verarbeitet. Der Kompass-Tutorial-Status wird lokal im Browser/App-Speicher (<code>localStorage</code>) gespeichert. Beim Schließen der App oder „Neue Serie“ werden geladene Bilder verworfen.</p>
+
+      <h2>7. Kinder</h2>
+      <p>DriftLens richtet sich an Erwachsene und professionelle Nutzer (Kreative, Designer, QA). Es werden wissentlich keine personenbezogenen Daten von Kindern erhoben.</p>
+
+      <h2>8. Käufe (geplant)</h2>
+      <p>Pro-Funktionen können später über den Google Play Store abgerechnet werden. Dann gelten zusätzlich die Datenschutzbestimmungen von Google für Zahlungsvorgänge. Wir erhalten keine Kreditkartendaten.</p>
+
+      <h2>9. Änderungen</h2>
+      <p>Diese Erklärung kann bei neuen Versionen angepasst werden. Die aktuelle Fassung findest du in der App unter „Datenschutz“.</p>
+    </article>
+
+    <article id="content-en" hidden>
+      <h1>Privacy Policy</h1>
+      <p class="privacy-meta">DriftLens · Version 1.0.0 · Last updated: 2 September 2026</p>
+
+      <div class="privacy-box">
+        <strong>In short:</strong> DriftLens does not upload your images or videos. Analysis runs on your device. No account. No tracking.
+      </div>
+
+      <h2>1. Controller</h2>
+      <p>DriftLens is offered as an independent app. Contact us via “Report issue” in the app or the details on Google Play.</p>
+
+      <h2>2. What data is processed</h2>
+      <p>DriftLens processes files you choose or drop (images, optional video for frame extraction). Files stay on your device.</p>
+      <ul>
+        <li>No upload of your images or videos to our servers</li>
+        <li>No account, no sign-up</li>
+        <li>No ads, no analytics tracking</li>
+        <li>QA reports (JSON/HTML) are exported locally only when you tap “Report”</li>
+      </ul>
+
+      <h2>3. Optional face gate</h2>
+      <p>If you enable face gate, the app downloads AI models once from third parties (MediaPipe via jsDelivr and Google Cloud Storage) so faces can be detected locally. Your images are <em>not</em> sent to those services — only model files are downloaded. Detection then runs offline on device.</p>
+
+      <h2>4. “Report issue” feedback</h2>
+      <p>When you send feedback, the app copies your text plus app version and device info to the clipboard. You decide whether and where to forward it (email, chat, etc.). Nothing is sent automatically.</p>
+
+      <h2>5. Internet connection</h2>
+      <p>Core features work offline. Internet is only needed for:</p>
+      <ul>
+        <li>optional face gate (one-time model download)</li>
+        <li>sample series on first load (if not cached yet)</li>
+        <li>PWA updates via service worker (browser install)</li>
+      </ul>
+
+      <h2>6. On-device storage</h2>
+      <p>Images are processed in your device memory. Compass tutorial state is stored locally (<code>localStorage</code>). Loaded images are discarded when you close the app or start a new series.</p>
+
+      <h2>7. Children</h2>
+      <p>DriftLens is aimed at adults and professional users (creators, designers, QA). We do not knowingly collect personal data from children.</p>
+
+      <h2>8. Purchases (planned)</h2>
+      <p>Pro features may be billed through Google Play later. Google’s privacy terms then apply to payments. We do not receive card details.</p>
+
+      <h2>9. Changes</h2>
+      <p>This policy may be updated with new releases. The current version is linked from the app under “Privacy”.</p>
+    </article>
+  </div>
+  <script>
+    const de = document.getElementById("content-de");
+    const en = document.getElementById("content-en");
+    const btnDe = document.getElementById("lang-de");
+    const btnEn = document.getElementById("lang-en");
+    const back = document.getElementById("back-link");
+
+    function setLang(lang) {
+      const isDe = lang !== "en";
+      de.hidden = !isDe;
+      en.hidden = isDe;
+      btnDe.classList.toggle("on", isDe);
+      btnEn.classList.toggle("on", !isDe);
+      document.documentElement.lang = isDe ? "de" : "en";
+      document.title = isDe ? "DriftLens — Datenschutz" : "DriftLens — Privacy";
+      back.textContent = isDe ? "← Zur App" : "← Back to app";
+    }
+
+    btnDe.addEventListener("click", () => setLang("de"));
+    btnEn.addEventListener("click", () => setLang("en"));
+
+    const param = new URLSearchParams(location.search).get("lang");
+    if (param === "en") setLang("en");
+  </script>
+</body>
+</html>

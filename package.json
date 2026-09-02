@@ -1,0 +1,20 @@
+{
+  "name": "driftlens",
+  "version": "3.5.0",
+  "private": true,
+  "description": "DriftLens — local QA for AI image series",
+  "scripts": {
+    "build:web": "node scripts/copy-www.js",
+    "cap:sync": "npm run build:web && npx cap sync android",
+    "cap:open": "npx cap open android",
+    "android": "npm run cap:sync && npx cap open android"
+  },
+  "capacitor": {
+    "platforms": ["android"]
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0"
+  }
+}
