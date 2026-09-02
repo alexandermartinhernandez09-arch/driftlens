@@ -12,6 +12,16 @@ Diese URL in der **Google Play Console** unter Datenschutzrichtlinie eintragen.
 
 ## Einmalig einrichten
 
+**Schnellweg:** In PowerShell im Projektordner:
+
+```powershell
+.\scripts\push-github.ps1
+```
+
+(Dabei GitHub im Browser bestätigen.)
+
+Oder manuell:
+
 1. Repo auf GitHub anlegen (öffentlich), z. B. `driftlens`
 2. Code pushen (Branch `main`)
 3. GitHub → **Settings → Pages → Build and deployment**
