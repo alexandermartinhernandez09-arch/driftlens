@@ -2,9 +2,9 @@
 # Einmal in PowerShell ausfuehren (Browser oeffnet sich fuer Login):
 
 $env:Path = "C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI;" + $env:Path
-Set-Location $PSScriptRoot\..
+Set-Location (Join-Path $PSScriptRoot "..")
 
-Write-Host "=== DriftLens → GitHub ===" -ForegroundColor Cyan
+Write-Host "=== DriftLens -> GitHub ===" -ForegroundColor Cyan
 
 gh auth status 2>$null
 if ($LASTEXITCODE -ne 0) {
@@ -12,7 +12,15 @@ if ($LASTEXITCODE -ne 0) {
   gh auth login -h github.com -p https -w
 }
 
-if (git remote get-url origin 2>$null) {
+$hasOrigin = $false
+try {
+  git remote get-url origin | Out-Null
+  $hasOrigin = $true
+} catch {
+  $hasOrigin = $false
+}
+
+if ($hasOrigin) {
   Write-Host "Remote origin existiert bereits — push only." -ForegroundColor Green
   git push -u origin main
   exit $LASTEXITCODE
@@ -35,5 +43,4 @@ Write-Host "Repo:     https://github.com/$user/$repoName"
 Write-Host "Privacy:  https://$user.github.io/$repoName/privacy.html"
 Write-Host ""
 Write-Host "Naechster Schritt in GitHub:" -ForegroundColor Yellow
-Write-Host "  Settings → Pages → Build and deployment → Source: GitHub Actions"
-Write-Host "  (Workflow laeuft nach erstem Push automatisch)"
+Write-Host "  Settings -> Pages -> Build and deployment -> Source: GitHub Actions"
