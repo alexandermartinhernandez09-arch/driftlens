@@ -13,22 +13,20 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 $hasOrigin = $false
-try {
-  git remote get-url origin | Out-Null
+$remoteUrl = git remote get-url origin 2>$null
+if ($LASTEXITCODE -eq 0 -and $remoteUrl) {
   $hasOrigin = $true
-} catch {
-  $hasOrigin = $false
 }
 
 if ($hasOrigin) {
-  Write-Host "Remote origin existiert bereits — push only." -ForegroundColor Green
+  Write-Host "Remote origin existiert bereits - push only." -ForegroundColor Green
   git push -u origin main
   exit $LASTEXITCODE
 }
 
 $repoName = "driftlens"
 Write-Host "Erstelle oeffentliches Repo: $repoName" -ForegroundColor Green
-gh repo create $repoName --public --source=. --remote=origin --push --description "DriftLens — local QA for AI image series"
+gh repo create $repoName --public --source=. --remote=origin --push --description "DriftLens - local QA for AI image series"
 
 if ($LASTEXITCODE -ne 0) {
   Write-Host "Repo-Name evtl. belegt. Anderen Namen waehlen und manuell:" -ForegroundColor Red

@@ -43,7 +43,7 @@ FEATURES
 HONEST
 DriftLens compares pixels and structure — no magic claims. Face gate is optional for portraits; it does not replace your eyes.
 
-Privacy: https://[YOUR-DOMAIN]/privacy.html
+Privacy: https://alexandermartinhernandez09-arch.github.io/driftlens/privacy.html
 
 Contact: “Report issue” in the app
 ```

@@ -43,8 +43,7 @@ FEATURES
 EHRLICH
 DriftLens vergleicht Pixel und Struktur — kein Magie-Versprechen. Face-Gate ist optional und hilft bei Portraits, ersetzt aber nicht dein Auge.
 
-Datenschutz: https://[DEINE-DOMAIN]/privacy.html
-(Kann auch als lokale Seite in der App verlinkt werden — für Play Console eine gehostete URL eintragen oder GitHub Pages nutzen.)
+Datenschutz: https://alexandermartinhernandez09-arch.github.io/driftlens/privacy.html
 
 Kontakt: über „Fehler melden“ in der App
 ```
