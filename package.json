@@ -1,6 +1,6 @@
 {
   "name": "driftlens",
-  "version": "3.5.0",
+  "version": "1.0.0",
   "private": true,
   "description": "DriftLens — local QA for AI image series",
   "scripts": {

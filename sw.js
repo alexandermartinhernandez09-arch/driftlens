@@ -1,4 +1,4 @@
-const CACHE = "driftlens-v3-30";
+const CACHE = "driftlens-v1-0-0";
 const HERO_VERSION = "336";
 const DEMO_VERSION = "320";
 

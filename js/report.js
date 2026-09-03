@@ -83,7 +83,7 @@ function downloadHTML(report, t) {
   <p>Serie: <strong class="${report.seriesVerdict}">${report.seriesVerdict}</strong> · ${report.generatedAt}</p>
   <p>${escapeHtml(report.note)}</p>
   <table>
-    <thead><tr><th>Datei</th><th>Rolle</th><th>Status</th><th>Maß</th><th>Pixel</th><th>SHA-256</th></tr></thead>
+    <thead><tr><th>Datei</th><th>Rolle</th><th>Status</th><th>Maß</th><th>Pixel</th><th>Check</th></tr></thead>
     <tbody>${rows}</tbody>
   </table>
 </body>
