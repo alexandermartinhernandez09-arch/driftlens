@@ -6,3 +6,7 @@ ios/
 *.log
 .cursor/
 docs/internal/
+*.jks
+*.keystore
+keystore.properties
+KEYSTORE_BACKUP.txt

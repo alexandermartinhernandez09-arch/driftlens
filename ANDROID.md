@@ -88,10 +88,12 @@ $env:JAVA_HOME = "C:\Program Files\Android\Android Studio\jbr"
 .\gradlew.bat clean assembleDebug
 ```
 
-## Google Play (später)
+## Google Play
 
 1. Developer-Konto (~25 USD einmalig)
-2. Signierter Release-Build (AAB)
+2. Signierter Release-Build (AAB) ✅  
+   `C:\AndroidBuild\android\app\outputs\bundle\release\app-release.aab`  
+   Schlüssel lokal: `android\driftlens-release.jks` + `android\KEYSTORE_BACKUP.txt` (Backup machen!)
 3. Datenschutz-URL (HTTPS) — Inhalt in `privacy.html`, Texte in `docs/store/`
 4. Screenshots + Store-Beschreibung (DE/EN) — Vorlagen in `docs/store/google-play-de.md` und `google-play-en.md`
 
